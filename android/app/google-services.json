@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "1041306767120",
+    "project_id": "gasera-flutter-react",
+    "storage_bucket": "gasera-flutter-react.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041306767120:android:903ccd7efdc35a50e71f95",
+        "android_client_info": {
+          "package_name": "com.example.firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWuORrOPnJElBhh-9xV9Le-IDArr9ooQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041306767120:android:9bd870fc7211e3ede71f95",
+        "android_client_info": {
+          "package_name": "com.example.gasera_flutter_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWuORrOPnJElBhh-9xV9Le-IDArr9ooQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041306767120:android:bc13406c96a274d4e71f95",
+        "android_client_info": {
+          "package_name": "com.example.gasera_proyect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWuORrOPnJElBhh-9xV9Le-IDArr9ooQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
