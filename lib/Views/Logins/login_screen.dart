@@ -360,7 +360,7 @@ class DesignConstants {
 
   static OutlineInputBorder enabledBorder = OutlineInputBorder(
     borderSide: const BorderSide(
-      color: Color(0x00000000),
+      color: Color.fromARGB(255, 0, 0, 0),
       width: 2,
     ),
     borderRadius: BorderRadius.circular(8),
@@ -368,7 +368,7 @@ class DesignConstants {
 
   static OutlineInputBorder focusedBorder = OutlineInputBorder(
     borderSide: const BorderSide(
-      color: Color(0x00000000),
+      color: Color.fromARGB(255, 28, 24, 88),
       width: 2,
     ),
     borderRadius: BorderRadius.circular(8),
@@ -376,7 +376,7 @@ class DesignConstants {
 
   static OutlineInputBorder errorBorder = OutlineInputBorder(
     borderSide: const BorderSide(
-      color: Color(0x00000000),
+      color: Color.fromARGB(255, 249, 111, 111),
       width: 2,
     ),
     borderRadius: BorderRadius.circular(8),
@@ -384,7 +384,7 @@ class DesignConstants {
 
   static OutlineInputBorder focusedErrorBorder = OutlineInputBorder(
     borderSide: const BorderSide(
-      color: Color(0x00000000),
+      color: Color.fromARGB(255, 249, 111, 111),
       width: 2,
     ),
     borderRadius: BorderRadius.circular(8),

@@ -2,7 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase/models/gastruck_model.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class GastruckService {
@@ -30,7 +30,7 @@ class GastruckService {
       final doc =
           await _firestore.collection('gastrucks').doc(idVehiculo).get();
       if (doc.exists) {
-        return GastruckModel.fromJson(doc.data()!);
+        return GastruckModel.fromFirestore(doc.data()!);
       }
       throw Exception('Gastruck no encontrado');
     }
@@ -39,8 +39,7 @@ class GastruckService {
     final firestoreDocProvider = StreamProvider((ref) {
       final objetos =
           FirebaseFirestore.instance.collection('objetos').snapshots();
-
-      // Mapear la lista de documentos a una lista de objetos
+      //* Mapear la lista de documentos a una lista de objetos
       return objetos
           .map((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());
     });
@@ -52,25 +51,36 @@ class GastruckService {
   //         .map((doc) => GastruckModel.fromJson(doc.data()))
   //         .toList();
   //   }
-  // Proveedor para el documento de Firestore
+  //* Proveedor para el documento de Firestore
   final firestoreDocProvider = StreamProvider<DocumentSnapshot>((ref) {
-    return FirebaseFirestore.instance
+    var doc = FirebaseFirestore.instance
         .collection('objetos')
         .doc('miObjeto')
         .snapshots();
+
+    print(doc);
+    return doc;
   });
 
   //? Traer GasPorcentaje
 
 // final gasPercentageProvider = StateProvider<double>((ref) => 0.0);
-
-  final porcetanjeProvider = StreamProvider<double>((ref) async {
+  //? Proveedor para el porcentaje de gas
+  final gasPercentageProvider = FutureProvider((ref) async {
     final doc = await FirebaseFirestore.instance
         .collection('objetos')
         .doc('miObjeto')
         .get();
-    return doc.data()?['porcentajeGas'];
-  } as Stream<double> Function(StreamProviderRef<double> ref));
+    return doc.data()!['porcentajeGas'] as double;
+  });
+
+  //? Actualizar el porcentaje de gas
+  void updateGasPercentage(double value) {
+    FirebaseFirestore.instance
+        .collection('objetos')
+        .doc('miObjeto')
+        .update({'porcentajeGas': value});
+  }
 
 // Proveedor para el estado de activación
   final isActiveProvider = StateProvider<bool>((ref) => false);

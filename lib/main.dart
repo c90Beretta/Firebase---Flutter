@@ -1,7 +1,9 @@
 import 'package:firebase/Views/Logins/login_screen.dart';
+import 'package:firebase/providers/gastrucks_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -17,8 +19,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ProviderScope(
-      child: MaterialApp(
+    return MultiProvider(
+      providers: [ChangeNotifierProvider.value(value: GastrucksProvider())],
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'To-Do List',
         home: LoginScreen(),

@@ -1,6 +1,8 @@
 import 'package:firebase/Views/Logins/login_screen.dart';
+import 'package:firebase/Views/gas_inventory_view.dart';
 import 'package:firebase/Views/pipa_inventory.dart';
 import 'package:firebase/Views/profile/profile_view.dart';
+import 'package:firebase/widgets/edit_add_gastruck.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -152,7 +154,10 @@ class HomeInput extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const GastruckListScreen()));
+                },
                 child: Container(
                   width: sizeWidth * 0.36,
                   height: sizeWidth * 0.36,
@@ -316,7 +321,7 @@ class PorcentualGasera extends StatelessWidget {
                   IconButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => GasControlScreen()));
+                          builder: (context) => const AddEditGastruck()));
                     },
                     icon: const Icon(
                       Icons.edit,

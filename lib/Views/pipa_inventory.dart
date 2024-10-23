@@ -1,21 +1,21 @@
-import 'package:firebase/infrastructure/gastruck_service.dart';
-import 'package:firebase/infrastructure/providers/gasera_test.dart';
+import 'package:firebase/providers/gastruck_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class GasControlScreen extends ConsumerWidget {
   const GasControlScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var gasPercentage = ref.watch(GastruckService().porcetanjeProvider);
+    // var gasPercentage = ref.watch(GastruckService().gasPercentageProvider);
     var gasActive = ref.watch(GastruckService().isActiveProvider);
     var firestoreDoc = ref.watch(GastruckService().firestoreDocProvider);
+    final formkey = GlobalKey<FormState>();
+    final TextEditingController controller = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF4B39EF),
+        backgroundColor: const Color(0xFF4B39EF),
         titleTextStyle: const TextStyle(color: Colors.white),
         title: const Text(
           'Control de Gas',
@@ -27,18 +27,22 @@ class GasControlScreen extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Porcentaje de Gas',
-                  suffixText: '%',
-                ),
-                keyboardType: TextInputType.number,
-                initialValue: gasPercentage.toString(),
-                onChanged: (value) {
-                  //Todo: Implementar la actualización del porcentaje de gas
-                },
+              Form(
+                key: formkey,
+                child: TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'Porcentaje de Gas',
+                      suffixText: '%',
+                    ),
+                    controller: controller,
+                    keyboardType: TextInputType.number,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor ingrese un valor';
+                      }
+                      return null;
+                    }),
               ),
-              
               const SizedBox(height: 20),
               Row(
                 children: [
@@ -55,13 +59,14 @@ class GasControlScreen extends ConsumerWidget {
               ElevatedButton(
                 child: const Text('Guardar Cambios'),
                 onPressed: () {
-                  FirebaseFirestore.instance
-                      .collection('objetos')
-                      .doc('miObjeto')
-                      .set({
-                    'porcentajeGas': gasPercentage,
-                    'activo': gasActive,
-                  }, SetOptions(merge: true));
+                  //Todo: Implementar la actualización del porcentaje de gas
+                  if (formkey.currentState!.validate()) {
+                    final double v = double.parse(controller.text);
+                    GastruckService().updateGasPercentage(v);
+                  }
+
+                  //   final double v = value as double;
+                  //  GastruckService().updateGasPercentage(v);
                 },
               ),
               const SizedBox(height: 20),
