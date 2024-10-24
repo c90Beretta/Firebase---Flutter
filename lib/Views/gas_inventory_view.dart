@@ -1,5 +1,6 @@
 import 'package:firebase/models/gastruck_model.dart';
 import 'package:firebase/providers/gastrucks_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -82,6 +83,49 @@ class GastruckCard extends StatelessWidget {
                   'Nivel de gas: ${(_calculateGasPercentage(gastruck) * 100).toStringAsFixed(1)}%',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
+                const SizedBox(height: 8),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.edit),
+                        color: const Color(0xFF4B39EF),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          showCupertinoDialog(
+                              context: context,
+                              builder: (context) {
+                                return CupertinoAlertDialog(
+                                  title: const Text("Eliminar Camion"),
+                                  content: const Text(
+                                      "¿Estás seguro de que deseas eliminar este camión?"),
+                                  actions: [
+                                    CupertinoDialogAction(
+                                      child: const Text("Cancelar"),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                    CupertinoDialogAction(
+                                      child: const Text("Eliminar"),
+                                      onPressed: () {
+                                        Provider.of<GastrucksProvider>(context,
+                                                listen: false)
+                                            .deleteGastruck(
+                                                gastruck.idVehiculo);
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ],
+                                );
+                              });
+                        },
+                        icon: const Icon(Icons.delete),
+                        color: Colors.red,
+                      ),
+                    ])
               ],
             ),
           ),

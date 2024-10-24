@@ -42,7 +42,7 @@ class _AddEditGastruckState extends State<AddEditGastruck> {
         child: Form(
             key: _formkey,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               child: Column(
                 children: [
                   IconButton(
@@ -272,7 +272,15 @@ class _AddEditGastruckState extends State<AddEditGastruck> {
                         );
                       }
                     },
-                    child: const Text('Guardar'),
+                    child: SizedBox(
+                        width: 140,
+                        child: const Text(
+                          'Guardar',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 25,
+                          ),
+                        )),
                   )
                 ],
               ),

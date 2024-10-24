@@ -63,4 +63,13 @@ class GastrucksProvider with ChangeNotifier {
   Stream<List<GastruckModel>> getGastrucks() {
     return service.getGastrucks();
   }
+
+  void deleteGastruck(String idVehiculo) {
+    service.deleteGastruck(idVehiculo);
+  }
 }
+
+
+//crear nuevo proveedor para el documento de Firestore
+// final firestoreDocProvider = StreamProvider<DocumentSnapshot>((ref) {
+ 
