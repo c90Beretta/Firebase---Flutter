@@ -54,6 +54,11 @@ class GastrucksProvider with ChangeNotifier {
     }
     return Stream.empty();
   }
+
+  //? Actualizar gastruck
+  void updateGastruck(GastruckModel gastruck) {
+    service.updateGasTruck(gastruck.toJson());
+  }
 }
 
 

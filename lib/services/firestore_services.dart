@@ -9,6 +9,19 @@ class FirestoreServices {
     await _firestore.collection('gastrucks').add(gastruck);
   }
 
+  // Actualizar Gastruck
+  Future<void> updateGasTruck(Map<String, dynamic> gastruck) async {
+    final findDocument = _firestore
+        .collection('gastrucks')
+        .where('idVehiculo', isEqualTo: gastruck['idVehiculo']);
+
+    findDocument.get().then((value) {
+      value.docs.forEach((element) {
+        _firestore.collection('gastrucks').doc(element.id).update(gastruck);
+      });
+    });
+  }
+
   // Traer Gastrucks
   Stream<List<GastruckModel>> getGastrucks() {
     return _firestore.collection('gastrucks').snapshots().map((snapshot) =>

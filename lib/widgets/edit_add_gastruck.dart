@@ -86,7 +86,8 @@ class _AddEditGastruckState extends State<AddEditGastruck> {
                     backgroundColor: WidgetStatePropertyAll(Colors.white),
                   ),
                   onPressed: () {},
-                  icon: Icon(Icons.fire_truck_sharp, color: Color(0xFF4B39EF)),
+                  icon: const Icon(Icons.fire_truck_sharp,
+                      color: Color(0xFF4B39EF)),
                 ),
                 const SizedBox(
                   height: 20,
@@ -100,9 +101,13 @@ class _AddEditGastruckState extends State<AddEditGastruck> {
                     }
                   },
                   decoration: InputDecoration(
+                    labelText: "Cantidad de Gas",
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    helperText: "Cantidad de gas en litros",
+                    alignLabelWithHint: true,
+                    counterText: "Counter Text",
                     filled: true,
                     fillColor: Colors.white,
-                    hintText: "Ingrese la cantidad de gas",
                     prefixIcon: const Icon(
                       Icons.gas_meter_rounded,
                       color: Color(0xFF4B39EF),
@@ -271,17 +276,33 @@ class _AddEditGastruckState extends State<AddEditGastruck> {
                 ElevatedButton(
                   onPressed: () {
                     if (_formkey.currentState!.validate()) {
-                      final capacidadmaximaController =
-                          int.parse(_capacidadMaximaController.text);
-                      gastruckProvider.saveData(
-                        isActive: _switchValue,
-                        tipoDeCamion: _tipoDeCamionController.text,
-                        cantidadGas: _cantidadGasController.text,
-                        capacidadMaxima: capacidadmaximaController,
-                        nombreConductor: _nombreConductorController.text,
-                        placa: _placaController.text,
-                        estadoCamion: _estadoCamionController.text,
-                      );
+                      if (widget.idVehiculo != null) {
+                        gastruckProvider.updateGastruck(
+                          GastruckModel(
+                            idVehiculo: widget.idVehiculo!,
+                            isActive: _switchValue,
+                            tipoDeCamion: _tipoDeCamionController.text,
+                            cantidadGas: _cantidadGasController.text,
+                            capacidadMaxima:
+                                int.parse(_capacidadMaximaController.text),
+                            nombreConductor: _nombreConductorController.text,
+                            placa: _placaController.text,
+                            estadoCamion: _estadoCamionController.text,
+                          ),
+                        );
+                      } else {
+                        final capacidadmaximaController =
+                            int.parse(_capacidadMaximaController.text);
+                        gastruckProvider.saveData(
+                          isActive: _switchValue,
+                          tipoDeCamion: _tipoDeCamionController.text,
+                          cantidadGas: _cantidadGasController.text,
+                          capacidadMaxima: capacidadmaximaController,
+                          nombreConductor: _nombreConductorController.text,
+                          placa: _placaController.text,
+                          estadoCamion: _estadoCamionController.text,
+                        );
+                      }
                       showCupertinoDialog(
                         context: context,
                         builder: (context) {
