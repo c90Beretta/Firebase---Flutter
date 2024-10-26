@@ -1,4 +1,5 @@
 import 'package:firebase/Views/Logins/login_screen.dart';
+import 'package:firebase/Views/empleado_view.dart';
 import 'package:firebase/Views/gas_inventory_view.dart';
 import 'package:firebase/Views/pipa_inventory.dart';
 import 'package:firebase/Views/profile/profile_view.dart';
@@ -189,30 +190,36 @@ class HomeInput extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(20),
-                child: Container(
-                  width: sizeWidth * 0.36,
-                  height: sizeWidth * 0.36,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF4B39EF),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: 50,
-                        ),
-                        Text(
-                          'Empleados',
-                          style: TextStyle(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const EmpleadoView()));
+                  },
+                  child: Container(
+                    width: sizeWidth * 0.36,
+                    height: sizeWidth * 0.36,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF4B39EF),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.person,
                             color: Colors.white,
-                            fontSize: 20,
+                            size: 50,
                           ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ]),
+                          Text(
+                            'Empleados',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ]),
+                  ),
                 ),
               )
             ],

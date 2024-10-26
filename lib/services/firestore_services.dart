@@ -17,8 +17,28 @@ class FirestoreServices {
             .toList());
   }
 
+  //Traer Gastruck por id
+  Stream<GastruckModel> getGastruckById(String idVehiculo) {
+    final findDocument = _firestore
+        .collection('gastrucks')
+        .where('idVehiculo', isEqualTo: idVehiculo)
+        .snapshots();
+
+    final gastruck = findDocument.map((snapshot) => snapshot.docs
+        .map((docs) => GastruckModel.fromFirestore(docs.data()))
+        .first);
+    return gastruck;
+  }
+
   // delete Gastruck
   Future<void> deleteGastruck(String idVehiculo) async {
-    await _firestore.collection('gastrucks').doc(idVehiculo).delete();
+    final findDocument = _firestore.collection('gastrucks').snapshots();
+    findDocument.forEach((element) {
+      element.docs.forEach((element) {
+        if (element.data()['idVehiculo'] == idVehiculo) {
+          _firestore.collection('gastrucks').doc(element.id).delete();
+        }
+      });
+    });
   }
 }

@@ -1,5 +1,6 @@
 import 'package:firebase/models/gastruck_model.dart';
 import 'package:firebase/providers/gastrucks_provider.dart';
+import 'package:firebase/widgets/edit_add_gastruck.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -88,7 +89,15 @@ class GastruckCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => (AddEditGastruck(
+                                idVehiculo: gastruck.idVehiculo,
+                              )),
+                            ),
+                          );
+                        },
                         icon: const Icon(Icons.edit),
                         color: const Color(0xFF4B39EF),
                       ),
