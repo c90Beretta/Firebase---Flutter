@@ -1,8 +1,6 @@
 import 'package:firebase/models/gastruck_model.dart';
 import 'package:firebase/services/firestore_services.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 class GastrucksProvider with ChangeNotifier {
@@ -41,18 +39,6 @@ class GastrucksProvider with ChangeNotifier {
   Stream<GastruckModel> getById(String idVehiculo) {
     final gastruck = service.getGastruckById(idVehiculo);
     return gastruck;
-  }
-
-  //* Actualizar Controladores
-  Stream<GastruckModel> _checkIdVehiculo(dynamic widget, BuildContext context) {
-    if (widget.idVehiculo != null) {
-      final gastruckProvider =
-          Provider.of<GastrucksProvider>(context, listen: true);
-      final gastruck = gastruckProvider.getById(widget.idVehiculo!);
-
-      return gastruck;
-    }
-    return Stream.empty();
   }
 
   //? Actualizar gastruck

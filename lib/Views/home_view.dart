@@ -225,66 +225,11 @@ class HomeInput extends StatelessWidget {
             ],
           ),
         ),
-        const ListGaseraAnimated(),
-        // const PorcentajeGaseraAnimated(),
+        const PorcentualGasera(
+          imageurl: "/assets/yellow.png",
+          text: "65%",
+        ),
       ],
-    );
-  }
-}
-
-class ListGaseraAnimated extends StatefulWidget {
-  const ListGaseraAnimated({super.key});
-
-  @override
-  State<ListGaseraAnimated> createState() => _ListGaseraAnimatedState();
-}
-
-class _ListGaseraAnimatedState extends State<ListGaseraAnimated> {
-  @override
-  Widget build(BuildContext context) {
-    final sizeWidth = MediaQuery.of(context).size.width;
-    final sizeHeight = MediaQuery.of(context).size.height;
-    return Container(
-      width: sizeWidth * 0.8,
-      height: sizeHeight * 0.34,
-      child: const Center(
-        child: PorcentajeGaseraAnimated(),
-      ),
-    );
-  }
-}
-
-class PorcentajeGaseraAnimated extends StatelessWidget {
-  const PorcentajeGaseraAnimated({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    const porcentajeGas = 75;
-    return const Center(
-      child: Column(
-        children: [
-          if (porcentajeGas >= 75 && porcentajeGas <= 100)
-            PorcentualGasera(
-              text: "",
-              imageurl: 'assets/green.png',
-            ),
-          if (porcentajeGas >= 45 && porcentajeGas <= 74)
-            PorcentualGasera(
-              text: "Gasera al 45%",
-              imageurl: 'assets/yellow.png',
-            ),
-          if (porcentajeGas >= 25 && porcentajeGas <= 44)
-            PorcentualGasera(
-              text: "Gasera al 25%",
-              imageurl: 'assets/orange.png',
-            ),
-          if (porcentajeGas >= 0 && porcentajeGas <= 24)
-            PorcentualGasera(
-              text: "Gasera al 25%",
-              imageurl: 'assets/red.png',
-            ),
-        ],
-      ),
     );
   }
 }
@@ -302,75 +247,94 @@ class PorcentualGasera extends StatelessWidget {
   Widget build(BuildContext context) {
     final sizeWidth = MediaQuery.of(context).size.width;
     final sizeHeight = MediaQuery.of(context).size.height;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Container(
-        width: sizeWidth * 0.73,
-        height: sizeHeight * 0.34,
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(151, 54, 44, 142),
-          boxShadow: const [
-            BoxShadow(
-              color: Color.fromARGB(151, 54, 44, 142),
-              blurRadius: 10,
-              offset: Offset(0, 5),
-            ),
-          ],
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Center(
-          child: Column(
+    return Column(
+      children: [
+        SizedBox(
+          width: sizeWidth * 0.8,
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const AddEditGastruck()));
-                    },
-                    icon: const Icon(
-                      Icons.edit,
-                      color: Colors.white,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.delete,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 5),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Image.asset(
-                  imageurl,
-                  fit: BoxFit.fill,
-                  height: sizeHeight * 0.2,
+              Text(
+                "Mi Gasera:",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
                 ),
-              ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    text,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
               ),
             ],
           ),
         ),
-      ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Container(
+            width: sizeWidth * 0.73,
+            height: sizeHeight * 0.34,
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(151, 54, 44, 142),
+              boxShadow: const [
+                BoxShadow(
+                  color: Color.fromARGB(151, 54, 44, 142),
+                  blurRadius: 10,
+                  offset: Offset(0, 5),
+                ),
+              ],
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Center(
+              child: Column(
+                children: [
+                  const SizedBox(height: 5),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const AddEditGastruck()));
+                        },
+                        icon: const Icon(
+                          Icons.edit,
+                          color: Colors.white,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.delete,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Image.asset(
+                      imageurl,
+                      fit: BoxFit.fill,
+                      height: sizeHeight * 0.2,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        text,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
