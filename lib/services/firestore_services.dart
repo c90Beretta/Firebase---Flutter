@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase/models/gastruck_model.dart';
 
 class FirestoreServices {
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   // Guardar Gastruck;
   Future<void> createGasTruck(Map<String, dynamic> gastruck) async {
@@ -16,9 +16,9 @@ class FirestoreServices {
         .where('idVehiculo', isEqualTo: gastruck['idVehiculo']);
 
     findDocument.get().then((value) {
-      value.docs.forEach((element) {
+      for (var element in value.docs) {
         _firestore.collection('gastrucks').doc(element.id).update(gastruck);
-      });
+      }
     });
   }
 
@@ -47,11 +47,11 @@ class FirestoreServices {
   Future<void> deleteGastruck(String idVehiculo) async {
     final findDocument = _firestore.collection('gastrucks').snapshots();
     findDocument.forEach((element) {
-      element.docs.forEach((element) {
+      for (var element in element.docs) {
         if (element.data()['idVehiculo'] == idVehiculo) {
           _firestore.collection('gastrucks').doc(element.id).delete();
         }
-      });
+      }
     });
   }
 }

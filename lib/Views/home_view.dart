@@ -1,7 +1,6 @@
 import 'package:firebase/Views/Logins/login_screen.dart';
 import 'package:firebase/Views/empleado_view.dart';
 import 'package:firebase/Views/gas_inventory_view.dart';
-import 'package:firebase/Views/pipa_inventory.dart';
 import 'package:firebase/Views/profile/profile_view.dart';
 import 'package:firebase/widgets/edit_add_gastruck.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -107,12 +106,14 @@ class Homeview extends StatelessWidget {
           ),
           backgroundColor: const Color(0xFF4B39EF),
         ),
-        body: Column(
-          children: [
-            HomeInput(
-              correo: password,
-            ),
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              HomeInput(
+                correo: password,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -226,7 +227,7 @@ class HomeInput extends StatelessWidget {
           ),
         ),
         const PorcentualGasera(
-          imageurl: "/assets/yellow.png",
+          imageurl: "assets/yellow.png",
           text: "65%",
         ),
       ],
@@ -251,8 +252,10 @@ class PorcentualGasera extends StatelessWidget {
       children: [
         SizedBox(
           width: sizeWidth * 0.8,
+          height: sizeHeight * 0.1,
           child: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 "Mi Gasera:",
@@ -267,8 +270,8 @@ class PorcentualGasera extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Container(
-            width: sizeWidth * 0.73,
-            height: sizeHeight * 0.34,
+            width: sizeWidth * 0.8,
+            height: sizeHeight * 0.4,
             decoration: BoxDecoration(
               color: const Color.fromARGB(151, 54, 44, 142),
               boxShadow: const [

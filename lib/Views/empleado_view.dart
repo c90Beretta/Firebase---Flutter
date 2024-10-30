@@ -1,4 +1,3 @@
-import 'package:firebase/models/empleado_model.dart';
 import 'package:firebase/providers/empleado_provider.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +33,6 @@ class _EmpleadosInputState extends State<EmpleadosInput> {
   final _apellidoController = TextEditingController();
   final _telefonoController = TextEditingController();
   final _correoController = TextEditingController();
-  final _celularController = TextEditingController();
   final _puestoController = TextEditingController();
   final _folioController = TextEditingController();
 

@@ -9,13 +9,13 @@ class EmployeeProfileScreen extends StatelessWidget {
   final String phoneNumber;
 
   const EmployeeProfileScreen({
-    Key? key,
+    super.key,
     required this.employeeName,
     required this.employeePosition,
     required this.employeeId,
     required this.email,
     required this.phoneNumber,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class EmployeeProfileScreen extends StatelessWidget {
       ),
       appBar: AppBar(
         title: const Text('Perfil del Empleado',
-            style: const TextStyle(color: Colors.white)),
+            style: TextStyle(color: Colors.white)),
         backgroundColor: const Color(0xFF4B39EF),
       ),
       body: SingleChildScrollView(

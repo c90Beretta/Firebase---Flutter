@@ -99,6 +99,7 @@ class _AddEditGastruckState extends State<AddEditGastruck> {
                     if (value == null || value.isEmpty) {
                       return "Por favor ingrese un valor";
                     }
+                    return null;
                   },
                   decoration: InputDecoration(
                     labelText: "Cantidad de Gas",
@@ -131,6 +132,7 @@ class _AddEditGastruckState extends State<AddEditGastruck> {
                     if (value == null || value.isEmpty) {
                       return "Por favor ingrese un valor";
                     }
+                    return null;
                   },
                   decoration: InputDecoration(
                     filled: true,
@@ -158,6 +160,7 @@ class _AddEditGastruckState extends State<AddEditGastruck> {
                     if (value == null || value.isEmpty) {
                       return "Por favor ingrese un valor";
                     }
+                    return null;
                   },
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
@@ -184,6 +187,7 @@ class _AddEditGastruckState extends State<AddEditGastruck> {
                     if (value == null || value.isEmpty) {
                       return "Por favor ingrese un valor";
                     }
+                    return null;
                   },
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
@@ -212,6 +216,7 @@ class _AddEditGastruckState extends State<AddEditGastruck> {
                     if (value == null || value.isEmpty) {
                       return "Por favor ingrese un valor";
                     }
+                    return null;
                   },
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
@@ -240,6 +245,7 @@ class _AddEditGastruckState extends State<AddEditGastruck> {
                     if (value == null || value.isEmpty) {
                       return "Por favor ingrese un valor";
                     }
+                    return null;
                   },
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
@@ -326,9 +332,9 @@ class _AddEditGastruckState extends State<AddEditGastruck> {
                       );
                     }
                   },
-                  child: SizedBox(
+                  child: const SizedBox(
                       width: 140,
-                      child: const Text(
+                      child: Text(
                         'Guardar',
                         textAlign: TextAlign.center,
                         style: TextStyle(

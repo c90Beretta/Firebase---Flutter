@@ -22,8 +22,7 @@ class GastruckListScreen extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(
-                child: const Text('No hay camiones disponibles'));
+            return const Center(child: Text('No hay camiones disponibles'));
           }
           return ListView.builder(
             itemCount: snapshot.data!.length,
@@ -41,7 +40,7 @@ class GastruckListScreen extends StatelessWidget {
 class GastruckCard extends StatelessWidget {
   final GastruckModel gastruck;
 
-  const GastruckCard({Key? key, required this.gastruck}) : super(key: key);
+  const GastruckCard({super.key, required this.gastruck});
 
   @override
   Widget build(BuildContext context) {

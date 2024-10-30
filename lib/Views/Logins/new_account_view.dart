@@ -107,7 +107,7 @@ class _FormNewAccountState extends State<FormNewAccount> {
                 SizedBox(
                   height: sizeHeight * .04,
                 ),
-                Container(
+                SizedBox(
                   width: sizeWidth * 0.8,
                   //? Name FormField
                   child: TextFormField(
@@ -127,7 +127,7 @@ class _FormNewAccountState extends State<FormNewAccount> {
                 SizedBox(
                   height: sizeHeight * .02,
                 ),
-                Container(
+                SizedBox(
                   width: sizeWidth * 0.8,
                   //? Correo FormField
                   child: TextFormField(
@@ -147,7 +147,7 @@ class _FormNewAccountState extends State<FormNewAccount> {
                 SizedBox(
                   height: sizeHeight * .02,
                 ),
-                Container(
+                SizedBox(
                   width: sizeWidth * 0.8,
                   //? Password FormField
                   child: TextFormField(

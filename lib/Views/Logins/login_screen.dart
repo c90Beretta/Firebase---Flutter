@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, use_build_context_synchronously
 
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -74,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               width: double.infinity,
               decoration: const BoxDecoration(
-                color: const Color(0xFF4B39EF),
+                color: Color(0xFF4B39EF),
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 3,
