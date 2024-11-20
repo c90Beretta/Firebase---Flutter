@@ -1,5 +1,6 @@
 import 'package:firebase/Views/Logins/login_screen.dart';
 import 'package:firebase/providers/gastrucks_provider.dart';
+import 'package:firebase/services/empleado_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider.value(value: GastrucksProvider())],
+      providers: [
+        ChangeNotifierProvider.value(value: GastrucksProvider()),
+        ChangeNotifierProvider.value(value: EmpleadoService()),
+        ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'To-Do List',

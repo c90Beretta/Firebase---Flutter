@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase/Views/Logins/new_account_view.dart';
 import 'package:firebase/Views/home_view.dart';
 import 'package:firebase/dominio/user_auth.dart';
+import 'package:firebase/services/session_user.dart';
 import 'package:firebase/todo_list.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -25,34 +26,31 @@ class _LoginScreenState extends State<LoginScreen> {
     _userAuth();
   }
 
-  void _userAuth() {
-    //? Implementar la autenticación de usuario
+  void _userAuth() async {
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
       if (user == null) {
         print('Usuario no ha iniciado sesión');
-      } else {
-        DocumentSnapshot doc = await FirebaseFirestore.instance
-            .collection('usuarios')
-            .doc(user.uid)
-            .get();
+      }  
+      else {
+              DocumentSnapshot doc = await FirebaseFirestore.instance
+              .collection('usuarios')
+              .doc(user.uid)
+              .get();
+  
+            final mapUsuario = doc.data() as Map<String, dynamic>;
+            final nombre = mapUsuario['nombre'];
+            final email = mapUsuario['email'];
+            final uid = mapUsuario['uid'];
 
-        if (!doc.exists) {
-          print('Usuario no existe');
-        } else {
-          final mapUsuario = doc.data() as Map<String, dynamic>;
-          final nombre = mapUsuario['nombre'];
-          final email = mapUsuario['email'];
-          final uid = mapUsuario['uid'];
-          print("User name: $nombre");
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => FadeIn(
-                  animate: true,
-                  child: Homeview(
-                    uid: uid,
-                    email: email,
-                    password: nombre,
-                  ))));
-        }
+          
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => FadeIn(
+                    animate: true,
+                    child: Homeview(
+                      password: nombre,
+                      email: email,
+                      uid: uid,
+                    ))));
       }
     });
   }

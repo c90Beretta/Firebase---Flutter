@@ -22,6 +22,7 @@ class Homeview extends StatelessWidget {
     return PopScope(
       canPop: false,
       child: Scaffold(
+      
         bottomNavigationBar: BottomAppBar(
           color: const Color(0xFF4B39EF),
           child: Row(
@@ -63,7 +64,7 @@ class Homeview extends StatelessWidget {
             ],
           ),
         ),
-        backgroundColor: const Color(0x262531FF),
+        backgroundColor: const Color.fromARGB(255, 253, 253, 253),
         appBar: AppBar(
           actions: [
             IconButton(
@@ -230,6 +231,24 @@ class HomeInput extends StatelessWidget {
           imageurl: "assets/yellow.png",
           text: "65%",
         ),
+        Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF4B39EF)),
+                ),
+                onPressed: (){}, 
+                child: const Text("Nueva Pipa", style: TextStyle(color: Colors.white),),),
+                const SizedBox(width: 10,),
+              
+              ],
+
+
+          ),
+        )
+
       ],
     );
   }
@@ -258,9 +277,9 @@ class PorcentualGasera extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "Mi Gasera:",
+                "Mi Gasera Actual:",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black87,
                   fontSize: 24,
                 ),
               ),
@@ -273,7 +292,7 @@ class PorcentualGasera extends StatelessWidget {
             width: sizeWidth * 0.8,
             height: sizeHeight * 0.4,
             decoration: BoxDecoration(
-              color: const Color.fromARGB(151, 54, 44, 142),
+              color: const Color.fromARGB(255, 60, 54, 119),
               boxShadow: const [
                 BoxShadow(
                   color: Color.fromARGB(151, 54, 44, 142),

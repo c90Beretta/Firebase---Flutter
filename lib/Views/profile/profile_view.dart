@@ -93,6 +93,7 @@ class EmployeeProfileScreen extends StatelessWidget {
                 style: const TextStyle(fontSize: 18, color: Colors.grey),
               ),
               const SizedBox(height: 20),
+              
               _buildInfoCard('ID de Empleado', employeeId),
               _buildInfoCard('Correo Electrónico', email),
               _buildInfoCard('Número de Teléfono', phoneNumber),
